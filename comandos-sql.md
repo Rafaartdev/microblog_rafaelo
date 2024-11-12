@@ -54,4 +54,25 @@ INSERT INTO noticias (titulo, texto, resumo, imagem, usuario_id) VALUE (
  2
 );
 
+## Leitura de dados da tabela de "noticias"
+
+SELECT data, titulo FROM noticias;
+SELECT data, titulo FROM noticias;
+
+## Leitura de dados da tabela "usuarios"
+
+SELECT nome, email, tipo FROM usuarios;
+
+SELECT nome, email, tipo FROM usuarios WHERE tipo = 'editor';
+
+## Atualização de dados dos usuários
+
+UPDATE usuarios SET email = 'rafael.osilveira@gmail.com'
+WHERE id = 1;
+
+
+## Excluindo dados na tabela "noticias"
+
+DELETE FROM noticias WHERE id = 1;
+
 
