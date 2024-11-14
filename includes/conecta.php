@@ -9,7 +9,7 @@ $banco = "microblog_rafaelo";
 $conexao = mysqli_connect($servidor, $usuario, $senha, $banco);
 
 //Definindo o charset UTF8 para conexão
-mysql_set_charset($conexao,"utf8");
+mysqli_set_charset($conexao,"utf8");
 
 //Verificando conexão
 if($conexao === false){
