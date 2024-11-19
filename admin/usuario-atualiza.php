@@ -7,6 +7,23 @@ $id =$_GET['id'];
 
 //Chamamos a função para carregar os dados da pessoa através do id
 $dadosUsuario = listarUsuario($conexao, $id);
+
+if( isset($_POST['atualizar'])){
+    $nome = $_POST[	'nome'];
+    $email = $_POST['email'];
+    $tipo = $_POST['tipo'];
+
+	/*Se a senha estiver vazia OU for a mesma*/
+    if( empty($_POST['senha']) || password_verify($_POST['senha'], $dadosUsuario['senha'] )){
+       $senha = $dadosUsuario['senha'];
+	   } else {
+		$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+	   }
+    //Chamamos a função para UODATE no banco
+    atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo);
+    //Redirecionamos para a pagina com a lista de usuarios
+	header("location:usuarios.php");
+	}
 ?>
 
 
