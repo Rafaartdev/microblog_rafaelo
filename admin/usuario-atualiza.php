@@ -1,7 +1,14 @@
 <?php 
 require "../includes/cabecalho-admin.php";
-?>
+require "../includes/funcoes-usuarios.php";
 
+//Captirando o id passado via URL
+$id =$_GET['id'];
+
+//Chamamos a função para carregar os dados da pessoa através do id
+$dadosUsuario = listarUsuario($conexao, $id);
+?>
+<pre><?=var_dump($dadosUsuario)?></pre>
 
 <div class="row">
 	<article class="col-12 bg-white rounded shadow my-1 py-4">

@@ -39,12 +39,12 @@ $listaDeUsuarios = listarUsuarios($conexao);
 							<td> <?= $usuario['tipo'] ?></td>
 							<td class="text-center">
 								<a class="btn btn-warning"
-									href="usuario-atualiza.php">
+									href="usuario-atualiza.php?id=<?=$usuario['id']?>">
 									<i class="bi bi-pencil"></i> Atualizar
 								</a>
 
 								<a class="btn btn-danger excluir"
-									href="usuario-exclui.php">
+									href="usuario-exclui.php?id=<?=$usuario['id']?>">
 									<i class="bi bi-trash"></i> Excluir
 								</a>
 							</td>
