@@ -34,3 +34,16 @@ function listarUsuario($conexao, $id){
      return mysqli_fetch_assoc($resultado);
 }
 
+function atualizarUsuario($conexao, $id, $nome, $email, $senha, $tipo) {
+     $sql ="UPDATE usuarios SET
+                nome = '$nome',
+                email = '$email',
+                senha = '$senha',
+                tipo = '$tipo'
+         WHERE id = $id"; // NÃO ESQUEÇA NUNCA ESSA ***
+         //COPIE E COLE aqui o mysql_query da função inserirUsuario
+         mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+                
+}
+
