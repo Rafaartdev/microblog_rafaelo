@@ -43,4 +43,12 @@ function logout(){
     die();
 }
 
+/* verificar o nivel/previlegio de acesso do usuario */
+function verifiarNivel(){
+   if( $_SESSION['tipo'] !== 'admin' ){
+    /* Então, redirecione para a página não autorizado.php*/ 
+    header("location:nao-autorizado.php");
+    die();
+   }
+}
 

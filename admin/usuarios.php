@@ -2,6 +2,9 @@
 require "../includes/cabecalho-admin.php";
 require "../includes/funcoes-usuarios.php";
 
+
+verifiarNivel();
+
 $listaDeUsuarios = listarUsuarios($conexao);
 ?>
 
