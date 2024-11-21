@@ -41,7 +41,11 @@ function logout(){
     session_destroy();
     header("location:../login.php?saiu");
     die();
+}
 
 
-
+function buscarUsuario($conexao, $email){
+    $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+   $resultado = executarQuery($conexao, $sql);
+   return mysqli_fetch_assoc($resultado);
 }
