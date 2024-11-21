@@ -1,7 +1,9 @@
 <?php
+
 require "includes/funcoes-controle-de-acesso.php";
 require "includes/funcoes-usuarios.php";
 require "includes/cabecalho.php";
+
 /*Verificando se o botão entrar foi acionado*/
 if (isset($_POST['entrar'])) {
 
@@ -15,9 +17,21 @@ if (isset($_POST['entrar'])) {
 	$senha = $_POST['senha'];
 
 	//1) Buscando no banco de dados o usuario através do e-mail
-	$usuario = buscarUsuario($conexao, $usuario);
-}
+	$usuario = buscarUsuario($conexao, $email);
 
+	//2)Tendo um uuario válido, vamos verifiar a senha digitada comparando com a senha cadastrada no banco de dados */
+	if ($usuario !== null && password_verify($senha, $usuario['senha'])) {
+		//Iniciando o processo dce login
+		login($usuario['id'], $usuario['nome'], $usuario['tipo']);
+		//Redirecionar para admin/index.php
+		header("location:admin/index.php");
+		die();
+	} else {
+		//Senão, algo esta errado( email e/ ou senha e nao pode entrar)
+		header("location:login.php?dados_incorretos");
+		die();
+	}
+}
 ?>
 
 <div class="row">
@@ -44,7 +58,6 @@ if (isset($_POST['entrar'])) {
 		</form>
 
 	</div>
-
 
 </div>
 
