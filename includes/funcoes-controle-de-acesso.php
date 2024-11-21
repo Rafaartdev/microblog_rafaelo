@@ -22,7 +22,26 @@ function verificarAcesso(){
         session_destroy();
         /* Fazemos o usuario ir a pade login.php*/
         header("location:../login.php?acesso_negado");
-        /* e paramos */
+
+        /* e paramos completamente a função login */
         die();
     }
+}
+
+/*Funão que sera usada peloformulário login.php */
+function login($id, $nome, $tipo){
+// Criando variaveis de sessão
+   $_SESSION['id'] = $id;
+   $_SESSION['nome'] = $nome;
+   $_SESSION['id'] = $tipo;
+}
+
+/* Função que sera usada quando ckicar no link Sair */
+function logout(){
+    session_destroy();
+    header("location:../login.php?saiu");
+    die();
+
+
+
 }
