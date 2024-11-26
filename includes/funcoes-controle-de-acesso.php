@@ -33,7 +33,7 @@ function login($id, $nome, $tipo){
 // Criando variaveis de sessão
    $_SESSION['id'] = $id;
    $_SESSION['nome'] = $nome;
-   $_SESSION['id'] = $tipo;
+   $_SESSION['tipo'] = $tipo;
 }
 
 /* Função que sera usada quando ckicar no link Sair */
