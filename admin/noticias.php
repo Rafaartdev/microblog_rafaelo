@@ -29,9 +29,10 @@ $listaDenoticias = lerNoticias($conexao, $idUsuario, $tipoUsuario);
 				<thead class="table-light">
 					<tr>
 						<th>Título</th>
-						<th>Data</th>				
+						<th>Data</th>
+						
 						<?php if($tipoUsuario === 'admin'){ ?>
-						<th>Autor</th>
+						
 						<?php } ?>
 
 						<th class="text-center">Operações</th>

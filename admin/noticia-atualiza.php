@@ -1,6 +1,19 @@
 <?php
 require "../includes/cabecalho-admin.php";
+require "../includes/funcoes-noticias.php";
+//Capturando oparâmetro id enviado via URL/LINK dinâmivo
+$idNoticia = $_GET['id'];
+
+//Capturando o id usuario que stá logado
+$idUsuario = $_SESSION['id'];
+
+$tipoUsuario =$_SESSION['tipo'];
+
+$dadosDaNoticia = lerUmaNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario); 
 ?>
+
+
+
 
 
 <div class="row">
@@ -14,29 +27,31 @@ require "../includes/cabecalho-admin.php";
 
             <div class="mb-3">
                 <label class="form-label" for="titulo">Título:</label>
-                <input class="form-control" required type="text" id="titulo" name="titulo">
+                <input 
+                value="<?= $dadosDaNoticia['titulo']?>"
+class="form-control" required type="text" id="titulo" name="titulo">
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="texto">Texto:</label>
-                <textarea class="form-control" required name="texto" id="texto" cols="50" rows="6"></textarea>
+                <textarea class="form-control" required name="texto" id="texto" cols="50" rows="6"><?=$dadosDaNoticia['texto']?></textarea>
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="resumo">Resumo (máximo de 300 caracteres):</label>
                 <span id="maximo" class="badge bg-danger">0</span>
-                <textarea class="form-control" required name="resumo" id="resumo" cols="50" rows="2" maxlength="300"></textarea>
+                <textarea class="form-control" required name="resumo" id="resumo" cols="50" rows="2" maxlength="300"><?=$dadosDaNoticia['resumo']?></textarea>
             </div>
 
             <div class="mb-3">
                 <label for="imagem-existente" class="form-label">Imagem da notícia:</label>
                 <!-- campo somente leitura, meramente informativo -->
-                <input class="form-control" type="text" id="imagem-existente" name="imagem-existente" readonly>
+                <input value="<?=$dadosDaNoticia['imagem']?>" class="form-control" type="text" id="imagem-existente" name="imagem-existente" readonly>
             </div>
 
             <div class="mb-3">
                 <label for="imagem" class="form-label">Caso queira mudar, selecione outra imagem:</label>
-                <input class="form-control" type="file" id="imagem" name="imagem" accept="image/png, image/jpeg, image/gif, image/svg+xml">
+                <input  class="form-control" type="file" id="imagem" name="imagem" accept="image/png, image/jpeg, image/gif, image/svg+xml">
             </div>
 
             <button class="btn btn-primary" name="atualizar"><i class="bi bi-arrow-clockwise"></i> Atualizar</button>
