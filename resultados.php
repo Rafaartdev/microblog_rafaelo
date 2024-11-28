@@ -1,11 +1,20 @@
 <?php
 require "includes/cabecalho.php"; 
+require "includes/funcoes-noticias.php"; 
+// Capturando via URL/GET o ue foi digitado no campo de busca
+$termoDigitado = $_GET['busca'];
+
+//Carregando os dados da busca de dados pelo termo digitado
+$dadosDaBusca = buscar($conexao, $termoDigitado);
+
+var_dump($dadosDaBusca);
+
 ?>
 
 
 <div class="row bg-white rounded shadow my-1 py-4">
     <h2 class="col-12 fw-light">
-        Você procurou por <span class="badge bg-dark">termo buscado</span> e
+        Você procurou por <span class="badge bg-dark"><?=$termoDigitado?></span> e
         obteve <span class="badge bg-info">X</span> resultados
     </h2>
     
