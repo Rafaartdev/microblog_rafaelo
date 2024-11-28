@@ -85,6 +85,31 @@ function excluirNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario){
     executarQuery($conexao, $sql);
 }
 
+   function lerTodasNoticias($conexao){
+      $sql = "SELECT id, imagem, titulo, resumo FROM noticias
+        ORDER BY data DESC";
+    $resultado = executarQuery($conexao, $sql);
+    
+    return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+
+}
+
+function lernoticiaCompleta($conexao, $idNoticia){
+    $sql = "SELECT
+                noticias.id,
+                noticias.titulo,
+                noticias.data,
+                noticias.imagem,
+                noticias.texto,
+                usuarios.nome
+            FROM noticias JOIN usuarios    
+            ON noticias.usuario_id = usuarios.id
+            WHERE noticias.id = $idNoticia";
+           
+      $resultado = executarQuery($conexao, $sql);
+      return mysqli_fetch_assoc($resultado);     
+}
+
 /* *********** */
 
 

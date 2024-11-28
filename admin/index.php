@@ -1,5 +1,7 @@
 <?php 
 require "../includes/cabecalho-admin.php";
+require "../includes/funcoes-noticias.php";
+
 ?>
 
 
