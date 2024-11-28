@@ -82,6 +82,7 @@ function excluirNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario){
         $sql = "DELETE FROM noticias
                 WHERE id = $idNoticia AND usuario_id = $idUsuario";
     }
+    executarQuery($conexao, $sql);
 }
 
 /* *********** */
