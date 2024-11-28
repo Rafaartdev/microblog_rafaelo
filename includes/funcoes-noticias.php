@@ -121,8 +121,10 @@ Usamos o LIKE com % para uma pesquisa parcial/nao exata.*/
             ORDER BY data DESC";
     
        $resultado = executarQuery($conexao, $sql);
-       return mysqli_fetch_all($resultado);     
+       return mysqli_fetch_all($resultado, MYSQLI_ASSOC);     
  }
+      
+    
 /* *********** */
 
 
