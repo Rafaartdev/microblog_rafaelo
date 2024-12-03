@@ -13,9 +13,9 @@ if (isset($_POST['entrar'])) {
 		die();
 	}
 	//capiturando e mail e senha
-	$email = $_POST['email'];
-	$senha = $_POST['senha'];
-
+	$email = mysqli_real_escape_string($conexao, $_POST['email']);
+	$senha = mysqli_real_escape_string($conexao, $_POST['senha']);
+	 
 	//1) Buscando no banco de dados o usuario através do e-mail
 	$usuario = buscarUsuario($conexao, $email);
 
